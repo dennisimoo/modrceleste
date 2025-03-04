@@ -1,9 +1,14 @@
-FROM python:3.9-slim
+# Use an official lightweight Python image
+FROM python:3.10-slim
 
+# Set the working directory in the container
 WORKDIR /app
 
-COPY . /app
+# Copy the Python server script and requirements.txt
+COPY https_server.py .
 
-EXPOSE 8000
+# Expose the Render-assigned port (default 8080)
+EXPOSE 8080
 
-CMD ["python3", "-m", "http.server", "8000"]
+# Command to run the server
+CMD ["python3", "https_server.py"]
